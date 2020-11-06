@@ -1,0 +1,67 @@
+"use strict";
+module.exports = (sequelize, DataTypes) => {
+  const Test = sequelize.define(
+    "Tests",
+    {
+      name: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
+      // name: DataTypes.STRING,
+      ask: DataTypes.FLOAT,
+      baseCurrency: DataTypes.STRING,
+      basket: DataTypes.JSONB,
+      bid: DataTypes.FLOAT,
+      change1h: DataTypes.FLOAT,
+      change24h: DataTypes.FLOAT,
+      changeBod: DataTypes.FLOAT,
+      description: DataTypes.STRING,
+      enabled: DataTypes.BOOLEAN,
+      expired: DataTypes.BOOLEAN,
+      expiry: DataTypes.DATE,
+      expiryDescription: DataTypes.STRING,
+      group: DataTypes.STRING,
+      imfFactor: DataTypes.FLOAT,
+      index: DataTypes.FLOAT,
+      last: DataTypes.FLOAT,
+      lowerBound: DataTypes.FLOAT,
+      marginPrice: DataTypes.FLOAT,
+      mark: DataTypes.FLOAT,
+      minProvideSize: DataTypes.FLOAT,
+      moveStart: DataTypes.STRING,
+      perpetual: DataTypes.BOOLEAN,
+      positionLimitWeight: DataTypes.FLOAT,
+      postOnly: DataTypes.BOOLEAN,
+      price: DataTypes.FLOAT,
+      priceIncrement: DataTypes.FLOAT,
+      quoteCurrency: DataTypes.STRING,
+      quoteVolume24h: DataTypes.FLOAT,
+      restricted: DataTypes.BOOLEAN,
+      sizeIncrement: DataTypes.FLOAT,
+      type: DataTypes.STRING,
+      underlying: DataTypes.STRING,
+      underlyingDescription: DataTypes.STRING,
+      volumeUsd24h: DataTypes.FLOAT,
+      underlyingMark: DataTypes.FLOAT,
+      totalNav: DataTypes.FLOAT,
+      totalCollateral: DataTypes.FLOAT,
+      targetComponents: DataTypes.STRING,
+      pricePerShare: DataTypes.FLOAT,
+      positionsPerShare: DataTypes.JSONB,
+      positionPerShare: DataTypes.FLOAT,
+      outstanding: DataTypes.FLOAT,
+      leverage: DataTypes.FLOAT,
+      currentLeverage: DataTypes.FLOAT,
+      contractAddress: DataTypes.STRING,
+      bep2AssetName: DataTypes.STRING,
+      volume: DataTypes.FLOAT,
+      upperBound: DataTypes.FLOAT,
+      greeks: DataTypes.JSONB,
+    },
+    {}
+  );
+  Test.associate = function (models) {
+    // associations can be defined here
+  };
+  return Test;
+};
