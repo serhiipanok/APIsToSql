@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       basket: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },      
       bid: {
         type: Sequelize.FLOAT
@@ -125,7 +125,7 @@ module.exports = {
         type: Sequelize.FLOAT
       },      
       targetComponents: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },      
       pricePerShare: {
         type: Sequelize.FLOAT
@@ -158,7 +158,7 @@ module.exports = {
         type: Sequelize.FLOAT
       }, 
       greeks: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
