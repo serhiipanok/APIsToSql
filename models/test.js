@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       // name: DataTypes.STRING,
       ask: DataTypes.FLOAT,
       baseCurrency: DataTypes.STRING,
-      basket: DataTypes.TEXT,
+      basket: DataTypes.JSONB,
       bid: DataTypes.FLOAT,
       change1h: DataTypes.FLOAT,
       change24h: DataTypes.FLOAT,
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       totalCollateral: DataTypes.FLOAT,
       targetComponents: DataTypes.TEXT,
       pricePerShare: DataTypes.FLOAT,
-      positionsPerShare: DataTypes.STRING,
+      positionsPerShare: DataTypes.JSONB,
       positionPerShare: DataTypes.FLOAT,
       outstanding: DataTypes.FLOAT,
       leverage: DataTypes.FLOAT,
@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       bep2AssetName: DataTypes.STRING,
       volume: DataTypes.FLOAT,
       upperBound: DataTypes.FLOAT,
-      greeks: DataTypes.STRING,
+      greeks: DataTypes.JSONB,
     },
     {}
   );

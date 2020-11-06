@@ -37,7 +37,7 @@ class Cron {
         : localTimeZone;
       if (settings.cronSettings.enabled) {
         this.processImportTasks();
-        // this.initAutoTasksProcess(timeZone);
+        this.initAutoTasksProcess(timeZone);
       } else {
         console.log(
           `[${moment(new Date()).format(
