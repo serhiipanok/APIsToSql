@@ -1,6 +1,6 @@
 const CronJob = require("cron").CronJob;
 const moment = require("moment");
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const testdb = require("./models").Tests;
 const service = require("./service");
@@ -91,15 +91,14 @@ class Cron {
     try {
       let newSecondData = secondData;
       let nameArray = secondData.map((item) => item.name);
-      let newArray = firstData.filter(
-        (item) => !nameArray.includes(item.name)
-      );
+      let newArray = firstData.filter((item) => !nameArray.includes(item.name));
       newSecondData.push(...newArray);
 
-      let thirdNameArray = thirdData.map((item) => item.name);
-      newArray = newSecondData.filter(
-        (item) => !thirdNameArray.includes(item.name)
+      nameArray = newSecondData.map((item) => item.name);
+      newArray = thirdData.filter(
+        (item) => !nameArray.includes(item.name)
       );
+
       newSecondData.push(...newArray);
       nameArray = newSecondData.map((item) => item.name);
 
@@ -107,21 +106,19 @@ class Cron {
         attributes: ["name"],
         where: {
           name: {
-            [Op.in]: nameArray
-          }
+            [Op.in]: nameArray,
+          },
         },
       });
 
-      let newMarketAndFutureDatas = []
+      let newMarketAndFutureDatas = [];
       if (currentNameArray && currentNameArray.length > 0) {
         nameArray = currentNameArray.map((item) => item.getDataValue("name"));
         newMarketAndFutureDatas = newSecondData.filter(
           (item) => !nameArray.includes(item.name)
         );
-      }
-
-      await testdb.bulkCreate(newMarketAndFutureDatas);
-      
+        await testdb.bulkCreate(newMarketAndFutureDatas);
+      } else await testdb.bulkCreate(newSecondData);
     } catch (e) {
       console.log(e);
     }
