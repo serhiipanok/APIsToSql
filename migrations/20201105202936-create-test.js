@@ -131,7 +131,7 @@ module.exports = {
         type: Sequelize.FLOAT
       },      
       positionsPerShare: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },      
       positionPerShare: {
         type: Sequelize.FLOAT
