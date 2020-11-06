@@ -89,36 +89,9 @@ class Cron {
     const newData = await service.getData("etfs");
     const thirdData = this.mergeArray(newData);
     try {
-      let newSecondData = secondData;
-      let nameArray = secondData.map((item) => item.name);
-      let newArray = firstData.filter((item) => !nameArray.includes(item.name));
-      newSecondData.push(...newArray);
-
-      nameArray = newSecondData.map((item) => item.name);
-      newArray = thirdData.filter(
-        (item) => !nameArray.includes(item.name)
-      );
-
-      newSecondData.push(...newArray);
-      nameArray = newSecondData.map((item) => item.name);
-
-      let currentNameArray = await testdb.findAll({
-        attributes: ["name"],
-        where: {
-          name: {
-            [Op.in]: nameArray,
-          },
-        },
-      });
-
-      let newMarketAndFutureDatas = [];
-      if (currentNameArray && currentNameArray.length > 0) {
-        nameArray = currentNameArray.map((item) => item.getDataValue("name"));
-        newMarketAndFutureDatas = newSecondData.filter(
-          (item) => !nameArray.includes(item.name)
-        );
-        await testdb.bulkCreate(newMarketAndFutureDatas);
-      } else await testdb.bulkCreate(newSecondData);
+      await testdb.bulkCreate(firstData, { updateOnDuplicate: ["name"] });
+      await testdb.bulkCreate(secondData, { updateOnDuplicate: ["name"] });
+      await testdb.bulkCreate(thirdData, { updateOnDuplicate: ["name"] });
     } catch (e) {
       console.log(e);
     }
