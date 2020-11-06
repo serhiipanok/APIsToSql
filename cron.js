@@ -122,8 +122,6 @@ class Cron {
     } catch (e) {
       console.log(e);
     }
-
-    console.log("running a task every minute");
   }
 }
 
